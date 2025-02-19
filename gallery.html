@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Showcase</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header class="navbar">
+        <img src="images/sunriselogo.png" class="logo" alt="Sunrise Logo">
+        <div class="nav-container">
+            <nav>
+                <ul class="nav">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#bookings">Bookings</a></li>
+                </ul>
+            </nav>
+            <button class="login" onclick="showLogin()">Login</button>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        </div>
+    </header>
+    
+    
+    <main class="content">
+        <section id="gallery" class="gallery">
+            <div class="gallery-container">
+                <div class="gallery-item"><img src="birthday.png" alt="Gallery Image 1"></div>
+                <div class="gallery-item"><img src="coperate.png" alt="Gallery Image 2"></div>
+                <div class="gallery-item"><img src="wedding.png" alt="Gallery Image 3"></div>
+                <div class="gallery-item"><img src="result5.webp" alt="Gallery Image 4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Gallery Showcase. All rights reserved.</p>
+    </footer>
+
+    <style>
+        /* Layout fixes */
+
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f5f4e4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures full height */
+            overflow: hidden; /* Prevents scrollbars from appearing */
+            position: relative;
+        }
+
+        /* Star sparkle effect */
+/* Star sparkle effect */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: transparent;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: rgb(111, 182, 93);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 
+                       50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    opacity: 0.8;
+    animation: floatUp 6s linear infinite, twinkle 2s infinite alternate;
+}
+
+/* Floating movement */
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Twinkling effect */
+@keyframes twinkle {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Generate multiple stars dynamically */
+.star:nth-child(1) { left: 10%; animation-duration: 5s; }
+star:nth-child(2) { left: 25%; animation-duration: 6s; }
+.star:nth-child(3) { left: 40%; animation-duration: 7s; }
+.star:nth-child(4) { left: 55%; animation-duration: 5.5s; }
+.star:nth-child(5) { left: 70%; animation-duration: 6.5s; }
+.star:nth-child(6) { left: 85%; animation-duration: 7.5s; }
+        .content {
+            flex-grow: 1; /* Pushes footer down */
+            position: relative;
+            z-index: 1; /* Ensures content is above the sparkle effect */
+        }
+
+        header {
+            background: #be7846;
+            padding: 10px 0;
+            position: relative;
+            z-index: 1; /* Ensures header is above the sparkle effect */
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 60px; /* Logo size */
+            height: 60px;
+            border-radius: 50%;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            padding: 5px 10px;
+            transition: color 0.3s, background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .login-button {
+            background-color: white; /* White background for login button */
+            color: #8f5832; /* Dark text color */
+            border-radius: 20px;
+            border: 1px solid #a8a39f;
+            padding: 8px 16px !important;
+            transition: background-color 0.3s, transform 0.3s, color 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #328f58; /* Green background on hover */
+            color: white; /* White text on hover */
+            transform: scale(1.1); /* Slightly enlarge on hover */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+            border-color: #328f58; /* Change border color on hover */
+        }
+        
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            flex-wrap: wrap; /* Ensures responsiveness */
+        }
+        
+        .gallery-item img {
+            width: 200px;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            padding: 10px;
+            background: #be7846;
+            color: rgb(220, 226, 234);
+            font-size: 14px;
+            margin-top: auto; /* Ensures footer stays at bottom */
+            position: relative;
+            z-index: 1; /* Ensures footer is above the sparkle effect */
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            function createStar() {
+                let star = document.createElement("div");
+                star.classList.add("star");
+                star.style.left = Math.random() * 100 + "vw";
+                star.style.animationDuration = (Math.random() * 3 + 3) + "s"; // Between 3-6s for faster movement
+                star.style.width = star.style.height = Math.random() * 10 + 4 + "px"; // Random size 4-14px
+                document.body.appendChild(star);
+    
+                setTimeout(() => {
+                    star.remove(); // Remove after animation completes
+                }, 6000);
+            }
+    
+            // Generate stars at a faster rate
+            setInterval(() => {
+                for (let i = 0; i < 5; i++) { // 5 stars at a time
+                    createStar();
+                }
+            }, 500); // Every 0.5 seconds
+        });
+    </script>
+</body>
+</html>

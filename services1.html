@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: rgba(248, 238, 228, 0.405);
+            text-align: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('wedding-banner.jpg') center/cover no-repeat;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:#c49b80; ;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .motto {
+            font-size: 1.3em;
+            margin-top: 10px;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Services Section */
+        .services-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+        .service-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 900px;
+            gap: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .service-wrapper.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card {
+            background: rgba(248, 238, 228, 0.95);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 320px;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card img {
+            width: 260px;
+            height: 180px;
+            border-radius: 10px;
+        }
+
+        .service-card h3 {
+            color: #222;
+            margin: 10px 0;
+            font-size: 1.4em;
+        }
+
+        .service-card p {
+            font-size: 1.1em;
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        .service-description {
+            width: 50%;
+            text-align: justify;
+            padding: 30px;
+            color: #555;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        /* Alternating Layout */
+        .service-wrapper:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .service-wrapper:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .service-wrapper {
+                flex-direction: column !important;
+                text-align: center;
+            }
+
+            .service-description {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section with Motto -->
+    <div class="hero">
+        <h1 style="">Our Services</h1>
+        <p class="motto">"We offer impeccable wedding decor services in and around Surat"</p>
+    </div>
+
+    <div class="services-container">
+        
+        <div class="service-wrapper">
+            <div class="service-card">
+                <img src="wedding.webp" alt="">
+                <h3>Wedding Decoration</h3>
+                <p>PRICE: Contact us</p>
+            </div>
+            <p class="service-description">
+                Transform your wedding into a magical affair with stunning floral arrangements, elegant drapes, and customized themes.
+            </p>
+        </div>
+
+        <div class="service-wrapper">
+            <div class="service-card">
+                <img src="IMG-20250214-WA0078.jpg" alt="Catering">
+                <h3>Reception Setup</h3>
+                <p>PRICE: Contact us</p>
+            </div>
+            <p class="service-description">
+                Our exquisite reception setups include grand stage decor, aesthetic lighting, and luxurious guest seating arrangements.
+            </p>
+        </div>
+
+        <div class="service-wrapper">
+            <div class="service-card">
+                <img src="IMG-20250214-WA0023.jpg" alt="Decoration">
+                <h3>Sangeet Decoration</h3>
+                <p>PRICE: Contact us</p>
+            </div>
+            <p class="service-description">
+                Add charm and energy to your Sangeet with vibrant lighting, colorful backdrops, and a lively setup that sets the mood for celebrations.
+            </p>
+        </div>
+
+        <div class="service-wrapper">
+            <div class="service-card">
+                <img src="mehendhi.webp" alt="Photography">
+                <h3>Haldi Decoration</h3>
+                <p>PRICE: Contact us</p>
+            </div>
+            <p class="service-description">
+                Experience the elegance of our Haldi decor with traditional turmeric themes, floral elements, and rustic beauty.
+            </p>
+        </div>
+
+        <div class="service-wrapper">
+            <div class="service-card">
+                <img src="IMG-20250212-WA0026.jpg" alt="DJ Services">
+                <h3>Birthday Parties</h3>
+                <p>PRICE: Contact us</p>
+            </div>
+            <p class="service-description">
+                From themed decor to entertainment, we make birthdays truly memorable with fun-filled setups tailored to your needs.
+            </p>
+        </div>
+
+        <div class="service-wrapper">
+            <div class="service-card">
+                <img src="IMG-20250214-WA0082.jpg" alt="Venue Booking">
+                <h3>Furniture & Seating</h3>
+                <p>PRICE: Contact us</p>
+            </div>
+            <p class="service-description">
+                Elegant furniture and comfortable seating arrangements designed to complement your event's theme.
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const elements = document.querySelectorAll(".service-wrapper");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            elements.forEach(element => observer.observe(element));
+        });
+    </script>
+
+</body>
+</html>

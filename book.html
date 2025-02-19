@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(230 201 171 / 95%);
+        }
+        .calendar-container {
+            background: rgba(248, 238, 228, 0.95);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        #month-selector {
+            margin-bottom: 10px;
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-top: 10px;
+            animation: slideUp 0.5s ease-in-out;
+        }
+        .day {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9f9f9;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
+        }
+        .day:hover {
+            background: #e0e0e0;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .selected {
+            background: #007bff;
+            color: white;
+            animation: highlight 0.3s ease;
+        }
+        @keyframes highlight {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+        .booked {
+            background: red !important;
+            color: white;
+            pointer-events: none;
+        }
+        #confirm-booking {
+            margin-top: 15px;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        #confirm-booking:hover {
+            background: #218838;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar-container">
+        <h2>Booking Calendar</h2>
+        <select id="month-selector"></select>
+        <div id="calendar"></div>
+        <button id="confirm-booking">Confirm Booking</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const monthSelector = document.getElementById('month-selector');
+            const calendar = document.getElementById('calendar');
+            const confirmBookingBtn = document.getElementById('confirm-booking');
+
+            const bookedDaysPerMonth = {}; // Store booked days for each month
+
+            const months = [
+                'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 
+                'September', 'October', 'November', 'December'
+            ];
+
+            // Populate the month selector
+            months.forEach((month, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = month;
+                monthSelector.appendChild(option);
+            });
+
+            function generateCalendar(monthIndex) {
+                if (!bookedDaysPerMonth[monthIndex]) {
+                    bookedDaysPerMonth[monthIndex] = [];
+                }
+
+                const date = new Date(2025, monthIndex, 1);
+                const firstDay = date.getDay(); 
+                const daysInMonth = new Date(2025, monthIndex + 1, 0).getDate();
+
+                calendar.innerHTML = '';
+
+                // Add empty cells for alignment
+                for (let i = 0; i < firstDay; i++) {
+                    const emptyCell = document.createElement('div');
+                    emptyCell.classList.add('empty');
+                    calendar.appendChild(emptyCell);
+                }
+
+                // Add the days of the month
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const dayCell = document.createElement('div');
+                    dayCell.classList.add('day');
+                    dayCell.textContent = i;
+
+                    if (bookedDaysPerMonth[monthIndex].includes(i)) {
+                        dayCell.classList.add('booked');
+                    }
+
+                    calendar.appendChild(dayCell);
+                }
+            }
+
+            // Event delegation to handle day selection
+            calendar.addEventListener('click', (event) => {
+                if (event.target.classList.contains('day') && !event.target.classList.contains('booked')) {
+                    const selectedDay = document.querySelector('.day.selected');
+                    if (selectedDay) {
+                        selectedDay.classList.remove('selected');
+                    }
+                    event.target.classList.add('selected');
+                }
+            });
+
+            confirmBookingBtn.addEventListener('click', () => {
+                const selectedDay = document.querySelector('.day.selected');
+
+                if (!selectedDay) {
+                    alert('Please select a day to book.');
+                    return;
+                }
+
+                const dayNumber = parseInt(selectedDay.textContent, 10);
+                const monthIndex = parseInt(monthSelector.value, 10);
+
+                if (bookedDaysPerMonth[monthIndex].includes(dayNumber)) {
+                    alert('This day is already booked.');
+                    return;
+                }
+
+                bookedDaysPerMonth[monthIndex].push(dayNumber);
+                selectedDay.classList.add('booked');
+                selectedDay.classList.remove('selected');
+
+                alert(`Booking confirmed for ${dayNumber}. This day is now marked as booked.`);
+            });
+
+            // Initialize with the current month
+            const currentMonth = new Date().getMonth();
+            monthSelector.value = currentMonth;
+            generateCalendar(currentMonth);
+
+            monthSelector.addEventListener('change', (event) => {
+                generateCalendar(event.target.value);
+            });
+        });
+    </script>
+</body>
+</html>

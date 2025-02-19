@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrise</title>
+    
+ 
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="float.css">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="content-wrapper">
+        <!-- Header Section -->
+        <header class="navbar">
+            <img src="images/sunriselogo.png" class="logo" alt="Sunrise Logo">
+            <div class="nav-container">
+                <nav>
+                    <ul class="nav">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li ><a  onclick="openBook()" href="#bookings">Bookings</a></li>
+                    </ul>
+                </nav>
+                <button class="login" onclick="showLogin()">Login</button>
+                <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            </div>
+        </header>
+        
+        <!-- Fixed Phone Button (Appears on all pages) -->
+        <button class="fixed-phone-button" onclick="showcta()"> 📞 </button>
+
+    <!-- CTA Popup -->
+    <div class="cta-wrapper">
+        <div class="cta-container" id="ctapage">
+            <button class="close-btn" onclick="closecta()">✖</button>
+            <h2>Let’s Make Your Dream event a Reality</h2>
+            <p>We specialize in creating unforgettable event experiences. Get in touch with us today!</p>
+            <a href="tel:+9887820699" class="cta-btn">Call Now</a>
+        </div>
+    </div>
+        <!-- Hero Section -->
+        <main>
+            <section class="hero" id="home">
+                <div class="bg">
+                    <img src="images/bg1.jpg" alt="Background Image">
+                </div>
+                <div class="hero-content">
+                    <div class="matter">
+                        <p>YOUR HAPPINESS IS OUR RESPONSIBILITY</p>
+                    </div>
+                    <button class="booknow"  onclick="openBook()">BOOK NOW</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <h2>Our Services</h2>
+            <div class="service-cards">
+                <div class="card">
+                    <img src="images/wedding.png" alt="Service 1">
+                    <h3>Wedding Planning</h3>
+                    <p>We make your dream wedding come true with perfect arrangements.</p>
+                    <button class="contact-btn" onclick="openServices()">Explore More</button>
+                </div>
+                <div class="card">
+                    <img src="images/coparate.png" alt="Service 2">
+                    <h3>Corporate Events</h3>
+                    <p>Seamless planning for your business events and conferences.</p>
+                    <button class="contact-btn" onclick="openServices()">Explore More</button>
+                </div>
+                <div class="card">
+                    <img src="images/birthday.png" alt="Service 3">
+                    <h3>Birthday Parties</h3>
+                    <p>Make birthdays extra special with customized themes.</p>
+                    <button class="contact-btn" onclick="openServices()">Explore More</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery" id="gallery">
+            <h2>Our Gallery</h2>
+            <div class="gallery-images">
+                <img src="images/wedding.png" alt="Gallery Image 1">
+                <img src="images/coparate.png" alt="Gallery Image 2">
+                <img src="images/birthday.png" alt="Gallery Image 3">
+            </div>
+            <button class="contact-btn" onclick="openGallery()">Explore More</button>
+        </section>
+        
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <h2>Contact Us</h2>
+            <p>Have questions? Reach out to us!</p>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button class="contact-btn">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-wrapper">
+        <div class="login-container" id="loginPage">
+            <button class="close-btn" onclick="closeLogin()">✖</button>
+            <div class="logo">
+                <img src="images/sunriselogo.png" alt="Sunrise Events Logo">
+            </div>     
+            <h2 class="title">Sign up</h2>
+            <form class="signin-form">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email" required>
+                
+                <label>Ph no</label>
+                <input type="tel" placeholder="Enter your phone number" required>
+                
+                <label>Password</label>
+                <input type="password" placeholder="Enter your password" required>
+                
+                <label>Confirm Password</label>
+                <input type="password" placeholder="Confirm your password" required>
+                
+                <button type="submit" class="signin-btn">Sign up</button>
+            </form>
+            
+            <div class="google-signin">
+                <button class="google-btn">
+                    <img src="google-logo.png" alt="Google"> Sign In With Google
+                </button>
+            </div>
+        </div>
+    
+        <p class="login-link">Already have an account? <a href="#">Login</a></p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav');
+            nav.classList.toggle('active');
+        }
+
+        function showLogin() {
+            document.getElementById('loginPage').classList.add('active');
+            document.body.classList.add('login-active'); 
+        }
+
+        function closeLogin() {
+            document.getElementById('loginPage').classList.remove('active');
+            document.body.classList.remove('login-active'); 
+        }
+        function toggleSection(id) {
+            document.getElementById(id).classList.toggle("show");
+        }
+
+        function toggleMenu() {
+            document.querySelector('.nav').classList.toggle('active');
+        }
+        function openGallery() {
+            window.location.href = "galleyy/gallery/gallery.html"; // Ensure this file exists in your project
+        }
+        function openBook(){
+            window.location.href='book.html';
+        }
+        function openServices() {
+            window.location.href = "services1.html"; // Ensure this file exists in your project
+        }
+
+        function showcta() {
+            document.getElementById('ctapage').classList.add('active');
+            document.body.classList.add('cta-active');
+        }
+
+        // Close CTA Popup
+        function closecta() {
+            document.getElementById('ctapage').classList.remove('active');
+            document.body.classList.remove('cta-active');
+        }
+
+    </script>
+
+</body>
+</html>

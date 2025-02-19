@@ -1,0 +1,110 @@
+/* Preview Section */
+.preview-section {
+    padding: 60px 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    margin-bottom: 20px;
+}
+
+.preview-section h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #f8d49d;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.preview-section p {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Explore More Button */
+.explore-btn {
+    background-color: transparent;
+    color: #f8d49d;
+    padding: 10px 20px;
+    border: 2px solid #f8d49d;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: 0.3s ease-in-out;
+}
+
+.explore-btn:hover {
+    background-color: #f8d49d;
+    color: black;
+}
+
+/* Full Section (Hidden by default) */
+.full-section {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.full-section.show {
+    display: block;
+}
+
+/* Services Section Styling */
+.service-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.service-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    max-width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.service-box h3 {
+    color: #f8d49d;
+    font-size: 20px;
+}
+
+.service-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Gallery Section */
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.gallery-container img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.1);
+}
+
+/* Contact Section */
+.contact-info {
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+}

@@ -1,0 +1,121 @@
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:; /* Slightly transparent */
+    padding: 15px 50px;
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 94.5%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo {
+    height: 80px;
+    border-radius: 50px;
+    opacity: 1;
+}
+
+/* Navigation */
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+}
+
+
+
+.nav a {
+    position: relative; /* Needed for absolute ::after to position correctly */
+    text-decoration: none;
+    font-size: 18px;
+    color: #654321;
+    font-weight: bold;
+    padding: 5px 0; /* Ensures proper spacing */
+    display: inline-block; /* Ensures it behaves properly */
+    transition: color 0.3s ease-in-out;
+}
+
+
+/* Hover Effect */
+.nav a:hover {
+    color: #b07a67;
+}
+
+/* Smooth Underline Animation */
+/* Smooth Underline Animation */
+.nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0; /* Places the underline just below the text */
+    width: 0;
+    height: 2px;
+    background-color: #b07a67;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+    transform: translateX(-50%); /* Centers the underline */
+}
+
+
+.nav a:hover::after {
+    width: 100%; /* Expands underline */
+    left: 50%; /* Starts expanding from the left */
+    transform: translateX(-50%); /* Ensures full expansion */
+}
+
+/* Login Button */
+.login {
+    background-color: transparent;
+    color: #8B4513;
+    padding: 10px 20px;
+    border: 2px solid #8B4513;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: 0.3s ease-in-out;
+}
+
+.login:hover {
+    background-color: #C3937D;
+    color: white;
+}
+
+/* Hamburger Menu Icon */
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #654321;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 30px;
+    }
+
+    .nav {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background-color: rgba(248, 238, 228, 0.95);
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}
